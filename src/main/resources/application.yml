@@ -1,0 +1,13 @@
+#数据库配置
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=GMT&useSSL=true
+    username: root
+    password: rootroot
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:com/demo/mapper/*.xml
+  type-aliases-package: com.demo.entity
+  # 驼峰命名规范 如：数据库字段是  order_id 那么 实体字段就要写成 orderId
+  configuration.map-underscore-to-camel-case: true
