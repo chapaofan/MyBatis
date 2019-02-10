@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import tk.mybatis.mapper.common.BaseMapper;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  * @Version 1.0
  */
 @Mapper
-public interface UserMapper {
+public interface UserMapper extends BaseMapper<User> {
 
     /**
      * 根据用户名查询用户结果集
@@ -35,4 +36,12 @@ public interface UserMapper {
 
     @Insert("INSERT INTO `t_user`(`username`,`password`) VALUES (#{username},#{password})")
     int insert(User user);
+
+    /**
+     * 根据用户名统计（TODO 假设它是一个很复杂的SQL）
+     *
+     * @param username 用户名
+     * @return 统计结果
+     */
+    int countByUsername(String username);
 }
